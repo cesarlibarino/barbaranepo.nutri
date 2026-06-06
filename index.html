@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bárbara Panuceno | Nutrição Feminina, Emagrecimento e Saúde</title>
+  <title>Bárbara Panuceno | Nutricionista</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,19 +12,17 @@
   <style>
     :root{
       --dark:#071b24;
-      --dark-soft:#0d2a35;
-      --blue:#1c8fb8;
-      --blue-light:#65d9ff;
+      --dark-2:#092736;
+      --blue:#65d9ff;
       --pink:#f0619b;
       --lilac:#bfa8ff;
-      --cream:#fff8f2;
       --white:#ffffff;
       --muted:rgba(255,255,255,.72);
       --muted-2:rgba(255,255,255,.50);
       --line:rgba(255,255,255,.12);
       --glass:rgba(255,255,255,.065);
       --shadow:0 28px 80px rgba(0,0,0,.32);
-      --font:'Inter', Arial, Helvetica, sans-serif;
+      --font:'Inter', Arial, sans-serif;
       --display:'Playfair Display', Georgia, serif;
       --transition:all .35s cubic-bezier(.25,1,.5,1);
     }
@@ -47,14 +45,14 @@
       -webkit-font-smoothing:antialiased;
     }
 
-    img{
-      max-width:100%;
-      display:block;
-    }
-
     a{
       text-decoration:none;
       color:inherit;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
     }
 
     .container{
@@ -72,16 +70,21 @@
       padding:92px 0;
     }
 
-    .watermark{
+    .section::before,
+    .hero::before{
+      content:"BP";
       position:absolute;
-      inset:0;
-      background-image:url('./watermark.jpg');
-      background-repeat:no-repeat;
-      background-position:center;
-      background-size:contain;
-      opacity:.035;
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-50%);
+      font-family:var(--display);
+      font-size:34vw;
+      font-weight:800;
+      line-height:1;
+      color:rgba(255,255,255,.025);
       z-index:0;
       pointer-events:none;
+      letter-spacing:-2vw;
     }
 
     .overlay{
@@ -106,7 +109,7 @@
       display:inline-flex;
       align-items:center;
       gap:10px;
-      color:var(--blue-light);
+      color:var(--blue);
       text-transform:uppercase;
       letter-spacing:2.8px;
       font-size:11px;
@@ -134,8 +137,9 @@
       font-weight:800;
     }
 
-    .title span{
-      color:var(--blue-light);
+    .title span,
+    .hero h1 span{
+      color:var(--blue);
     }
 
     .subtitle{
@@ -161,7 +165,7 @@
     }
 
     .btn-main{
-      background:linear-gradient(90deg, var(--pink), var(--blue-light));
+      background:linear-gradient(90deg, var(--pink), var(--blue));
       color:white;
       box-shadow:0 18px 48px rgba(240,97,155,.22);
     }
@@ -183,12 +187,6 @@
       background:rgba(101,217,255,.09);
     }
 
-    .check{
-      color:var(--blue-light);
-      font-weight:900;
-      margin-right:8px;
-    }
-
     header{
       position:absolute;
       top:0;
@@ -205,10 +203,52 @@
       gap:24px;
     }
 
-    .logo{
-      width:155px;
-      max-height:72px;
-      object-fit:contain;
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .brand-mark{
+      width:46px;
+      height:46px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-family:var(--display);
+      font-size:20px;
+      font-weight:800;
+      color:white;
+      background:linear-gradient(135deg, var(--pink), var(--blue));
+      box-shadow:0 12px 34px rgba(101,217,255,.20);
+      position:relative;
+    }
+
+    .brand-mark::after{
+      content:"";
+      position:absolute;
+      inset:-5px;
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:50%;
+    }
+
+    .brand-text strong{
+      display:block;
+      font-family:var(--display);
+      font-size:22px;
+      line-height:1;
+      letter-spacing:-.4px;
+    }
+
+    .brand-text span{
+      display:block;
+      margin-top:4px;
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      color:rgba(255,255,255,.58);
+      font-weight:800;
     }
 
     .nav-links{
@@ -225,12 +265,12 @@
     }
 
     .nav-links a:hover{
-      color:var(--blue-light);
+      color:var(--blue);
     }
 
     .nav-cta{
       border:1px solid rgba(101,217,255,.32);
-      color:var(--blue-light);
+      color:var(--blue);
       padding:12px 18px;
       border-radius:999px;
       font-size:12px;
@@ -265,10 +305,6 @@
       max-width:760px;
     }
 
-    .hero h1 span{
-      color:var(--blue-light);
-    }
-
     .hero p{
       color:var(--muted);
       font-size:18px;
@@ -299,7 +335,7 @@
       font-family:var(--display);
       font-size:34px;
       line-height:1;
-      color:var(--blue-light);
+      color:var(--blue);
       font-weight:800;
       margin-bottom:8px;
     }
@@ -344,12 +380,14 @@
       z-index:-1;
     }
 
-    .hero-frame img{
+    .expert-img{
       width:100%;
       max-height:620px;
-      object-fit:contain;
-      filter:drop-shadow(0 34px 50px rgba(0,0,0,.42));
+      object-fit:cover;
+      object-position:center top;
       border-radius:30px;
+      filter:drop-shadow(0 34px 50px rgba(0,0,0,.42));
+      aspect-ratio:4/5;
     }
 
     .floating-card{
@@ -369,7 +407,7 @@
       font-size:29px;
       line-height:1;
       font-weight:800;
-      color:var(--blue-light);
+      color:var(--blue);
       margin-bottom:8px;
     }
 
@@ -383,6 +421,8 @@
       text-align:center;
       max-width:850px;
       margin:0 auto 56px;
+      position:relative;
+      z-index:3;
     }
 
     .center .title{
@@ -397,6 +437,8 @@
       display:grid;
       grid-template-columns:repeat(3,1fr);
       gap:24px;
+      position:relative;
+      z-index:3;
     }
 
     .card{
@@ -420,8 +462,9 @@
       justify-content:center;
       border-radius:16px;
       background:rgba(101,217,255,.10);
-      color:var(--blue-light);
+      color:var(--blue);
       margin-bottom:22px;
+      font-size:22px;
     }
 
     .card h3{
@@ -442,6 +485,8 @@
       grid-template-columns:.95fr 1.05fr;
       gap:72px;
       align-items:center;
+      position:relative;
+      z-index:3;
     }
 
     .split.reverse{
@@ -462,13 +507,8 @@
       z-index:-1;
     }
 
-    .image-box img{
-      width:100%;
-      border-radius:30px;
+    .image-box .expert-img{
       box-shadow:var(--shadow);
-      aspect-ratio:4/5;
-      object-fit:cover;
-      object-position:center top;
     }
 
     .copy-block .title{
@@ -495,7 +535,7 @@
     }
 
     .bullet span{
-      color:var(--blue-light);
+      color:var(--blue);
       font-weight:900;
       flex-shrink:0;
     }
@@ -558,6 +598,12 @@
       line-height:1.6;
     }
 
+    .check{
+      color:var(--blue);
+      font-weight:900;
+      margin-right:8px;
+    }
+
     .about-stats{
       display:grid;
       grid-template-columns:repeat(3,1fr);
@@ -575,7 +621,7 @@
       font-family:var(--display);
       font-size:34px;
       line-height:1;
-      color:var(--blue-light);
+      color:var(--blue);
       font-weight:800;
       margin-bottom:8px;
     }
@@ -588,12 +634,28 @@
     }
 
     .cta-section{
+      position:relative;
+      overflow:hidden;
       padding:110px 0;
       background:
         radial-gradient(circle at 50% 0%, rgba(101,217,255,.18), transparent 35%),
         radial-gradient(circle at 85% 80%, rgba(240,97,155,.16), transparent 35%),
         linear-gradient(180deg, #082431, #06151d);
       text-align:center;
+    }
+
+    .cta-section::before{
+      content:"BP";
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-50%);
+      font-family:var(--display);
+      font-size:34vw;
+      font-weight:800;
+      color:rgba(255,255,255,.025);
+      letter-spacing:-2vw;
+      pointer-events:none;
     }
 
     .cta-box{
@@ -604,6 +666,8 @@
       border:1px solid rgba(101,217,255,.22);
       background:rgba(255,255,255,.045);
       box-shadow:var(--shadow);
+      position:relative;
+      z-index:3;
     }
 
     .cta-box .title{
@@ -627,6 +691,8 @@
     .faq-wrap{
       max-width:860px;
       margin:0 auto;
+      position:relative;
+      z-index:3;
     }
 
     details{
@@ -654,7 +720,7 @@
 
     details summary::after{
       content:"+";
-      color:var(--blue-light);
+      color:var(--blue);
       font-size:24px;
       line-height:1;
     }
@@ -687,18 +753,12 @@
       border-bottom:1px solid rgba(255,255,255,.09);
     }
 
-    .footer-brand img{
-      width:130px;
-      max-height:74px;
-      object-fit:contain;
-      margin-bottom:14px;
-    }
-
     .footer-brand p{
       color:var(--muted-2);
       font-size:13px;
       max-width:430px;
       line-height:1.6;
+      margin-top:14px;
     }
 
     .footer-links{
@@ -712,7 +772,7 @@
     }
 
     .footer-links a:hover{
-      color:var(--blue-light);
+      color:var(--blue);
     }
 
     .footer-bottom{
@@ -814,8 +874,19 @@
         padding:18px 0;
       }
 
-      .logo{
-        width:126px;
+      .brand-mark{
+        width:40px;
+        height:40px;
+        font-size:17px;
+      }
+
+      .brand-text strong{
+        font-size:18px;
+      }
+
+      .brand-text span{
+        font-size:9px;
+        letter-spacing:1.4px;
       }
 
       .nav-cta{
@@ -955,11 +1026,6 @@
         text-align:center;
       }
 
-      .footer-brand img{
-        margin-left:auto;
-        margin-right:auto;
-      }
-
       .footer-links{
         justify-content:center;
       }
@@ -972,8 +1038,12 @@
   <header>
     <div class="container">
       <div class="nav">
-        <a href="#inicio">
-          <img src="./logo.png" alt="Bárbara Panuceno Nutricionista" class="logo">
+        <a href="#inicio" class="brand">
+          <div class="brand-mark">BP</div>
+          <div class="brand-text">
+            <strong>Bárbara Panuceno</strong>
+            <span>Nutricionista</span>
+          </div>
         </a>
 
         <nav class="nav-links">
@@ -991,7 +1061,6 @@
   <main>
 
     <section class="hero" id="inicio">
-      <div class="watermark"></div>
       <div class="overlay"></div>
 
       <div class="container">
@@ -1035,7 +1104,7 @@
             <div class="hero-image-bg"></div>
 
             <div class="hero-frame">
-              <img src="./hero.jpg" alt="Bárbara Panuceno Nutricionista">
+              <img src="./expert.png" alt="Bárbara Panuceno Nutricionista" class="expert-img">
               <div class="floating-card glass">
                 <strong>Leveza e estratégia</strong>
                 <span>Nutrição para mulheres que querem resultado sem culpa, restrição extrema ou efeito sanfona.</span>
@@ -1048,7 +1117,6 @@
     </section>
 
     <section class="section" id="para-quem">
-      <div class="watermark"></div>
       <div class="overlay"></div>
 
       <div class="container">
@@ -1062,11 +1130,7 @@
 
         <div class="cards">
           <div class="card glass">
-            <div class="icon">
-              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                <path d="M20 7c-2.5 0-4.5 2-4.5 4.5S17.5 16 20 16M4 7c2.5 0 4.5 2 4.5 4.5S6.5 16 4 16M8.5 11.5h7"/>
-              </svg>
-            </div>
+            <div class="icon">✦</div>
             <h3>Quer emagrecer com constância</h3>
             <p>
               Para quem busca reduzir medidas com estratégia, sem viver presa a dietas restritivas ou recomeços infinitos.
@@ -1074,11 +1138,7 @@
           </div>
 
           <div class="card glass">
-            <div class="icon">
-              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                <path d="M12 21s-7-4.35-9.33-9.08C.6 7.72 3.2 4 7.33 4c2.08 0 3.41 1.18 4.67 2.67C13.26 5.18 14.59 4 16.67 4c4.13 0 6.73 3.72 4.66 7.92C19 16.65 12 21 12 21Z"/>
-              </svg>
-            </div>
+            <div class="icon">♡</div>
             <h3>Quer cuidar da saúde</h3>
             <p>
               Para mulheres que querem melhorar exames, disposição, intestino, energia e relação com o próprio corpo.
@@ -1086,11 +1146,7 @@
           </div>
 
           <div class="card glass">
-            <div class="icon">
-              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                <path d="M4 19V5M4 19h16M8 16v-5M12 16V8M16 16v-8"/>
-              </svg>
-            </div>
+            <div class="icon">✓</div>
             <h3>Quer performance e definição</h3>
             <p>
               Para quem treina, quer melhorar composição corporal e precisa de alimentação alinhada ao objetivo.
@@ -1101,7 +1157,6 @@
     </section>
 
     <section class="section">
-      <div class="watermark"></div>
       <div class="overlay"></div>
 
       <div class="container">
@@ -1147,13 +1202,12 @@
     </section>
 
     <section class="section" id="metodo">
-      <div class="watermark"></div>
       <div class="overlay"></div>
 
       <div class="container">
         <div class="split">
           <div class="image-box">
-            <img src="./about.jpg" alt="Consulta nutricional com Bárbara Panuceno">
+            <img src="./expert.png" alt="Bárbara Panuceno Nutricionista" class="expert-img">
           </div>
 
           <div class="copy-block">
@@ -1203,7 +1257,6 @@
     </section>
 
     <section class="section" id="sobre">
-      <div class="watermark"></div>
       <div class="overlay"></div>
 
       <div class="container">
@@ -1243,14 +1296,13 @@
           </div>
 
           <div class="image-box">
-            <img src="./about.jpg" alt="Bárbara Panuceno nutricionista">
+            <img src="./expert.png" alt="Bárbara Panuceno Nutricionista" class="expert-img">
           </div>
         </div>
       </div>
     </section>
 
     <section class="section">
-      <div class="watermark"></div>
       <div class="overlay"></div>
 
       <div class="container">
@@ -1264,32 +1316,19 @@
 
         <div class="cards">
           <div class="card glass">
-            <div class="icon">
-              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                <path d="M4 19V5M4 19h16M8 16v-5M12 16V8M16 16v-8"/>
-              </svg>
-            </div>
+            <div class="icon">01</div>
             <h3>Estratégia para emagrecer</h3>
             <p>Plano alimentar pensado para reduzir gordura com consistência, saciedade e respeito à sua rotina.</p>
           </div>
 
           <div class="card glass">
-            <div class="icon">
-              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                <path d="M12 21s-7-4.35-9.33-9.08C.6 7.72 3.2 4 7.33 4c2.08 0 3.41 1.18 4.67 2.67C13.26 5.18 14.59 4 16.67 4c4.13 0 6.73 3.72 4.66 7.92C19 16.65 12 21 12 21Z"/>
-              </svg>
-            </div>
+            <div class="icon">02</div>
             <h3>Relação leve com a comida</h3>
             <p>Você aprende a se alimentar melhor sem culpa, sem terrorismo nutricional e sem viver no 8 ou 80.</p>
           </div>
 
           <div class="card glass">
-            <div class="icon">
-              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                <path d="M9 12l2 2 4-5"/>
-                <path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-              </svg>
-            </div>
+            <div class="icon">03</div>
             <h3>Ajustes personalizados</h3>
             <p>Acompanhamento para adaptar o plano conforme sua evolução, dificuldades e resposta do corpo.</p>
           </div>
@@ -1298,8 +1337,6 @@
     </section>
 
     <section class="cta-section" id="contato">
-      <div class="watermark"></div>
-
       <div class="container">
         <div class="cta-box">
           <span class="tag">Comece agora</span>
@@ -1320,7 +1357,6 @@
     </section>
 
     <section class="section" id="duvidas">
-      <div class="watermark"></div>
       <div class="overlay"></div>
 
       <div class="container">
@@ -1359,7 +1395,14 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="./logo.png" alt="Bárbara Panuceno Nutricionista">
+          <a href="#inicio" class="brand">
+            <div class="brand-mark">BP</div>
+            <div class="brand-text">
+              <strong>Bárbara Panuceno</strong>
+              <span>Nutricionista</span>
+            </div>
+          </a>
+
           <p>
             Nutrição para mulheres que querem emagrecer, cuidar da saúde e alcançar sua melhor versão com leveza e estratégia.
           </p>
