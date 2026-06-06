@@ -14,6 +14,7 @@
       --dark:#071b24;
       --dark-2:#092736;
       --blue:#65d9ff;
+      --blue-2:#1d8db3;
       --pink:#f0619b;
       --lilac:#bfa8ff;
       --white:#ffffff;
@@ -71,7 +72,8 @@
     }
 
     .section::before,
-    .hero::before{
+    .hero::before,
+    .cta-section::before{
       content:"BP";
       position:absolute;
       left:50%;
@@ -81,7 +83,7 @@
       font-size:34vw;
       font-weight:800;
       line-height:1;
-      color:rgba(255,255,255,.025);
+      color:rgba(255,255,255,.026);
       z-index:0;
       pointer-events:none;
       letter-spacing:-2vw;
@@ -388,6 +390,7 @@
       border-radius:30px;
       filter:drop-shadow(0 34px 50px rgba(0,0,0,.42));
       aspect-ratio:4/5;
+      background:rgba(255,255,255,.08);
     }
 
     .floating-card{
@@ -465,6 +468,7 @@
       color:var(--blue);
       margin-bottom:22px;
       font-size:22px;
+      font-weight:900;
     }
 
     .card h3{
@@ -496,6 +500,10 @@
     .image-box{
       position:relative;
       border-radius:30px;
+      min-height:520px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      background:rgba(255,255,255,.06);
     }
 
     .image-box::after{
@@ -507,8 +515,41 @@
       z-index:-1;
     }
 
-    .image-box .expert-img{
-      box-shadow:var(--shadow);
+    .online-img{
+      width:100%;
+      height:100%;
+      min-height:520px;
+      object-fit:cover;
+      object-position:center;
+      border-radius:30px;
+      filter:saturate(.95) contrast(1.02);
+    }
+
+    .image-overlay-card{
+      position:absolute;
+      left:24px;
+      right:24px;
+      bottom:24px;
+      padding:22px;
+      border-radius:22px;
+      background:rgba(7,27,36,.68);
+      border:1px solid rgba(255,255,255,.14);
+      backdrop-filter:blur(14px);
+    }
+
+    .image-overlay-card strong{
+      display:block;
+      font-family:var(--display);
+      color:var(--blue);
+      font-size:26px;
+      line-height:1;
+      margin-bottom:8px;
+    }
+
+    .image-overlay-card span{
+      color:rgba(255,255,255,.72);
+      font-size:13px;
+      line-height:1.5;
     }
 
     .copy-block .title{
@@ -633,6 +674,45 @@
       display:block;
     }
 
+    .banner{
+      position:relative;
+      overflow:hidden;
+      border-radius:34px;
+      min-height:420px;
+      display:flex;
+      align-items:flex-end;
+      padding:36px;
+      box-shadow:var(--shadow);
+      background:
+        linear-gradient(180deg, rgba(7,27,36,.18), rgba(7,27,36,.88)),
+        url('https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1600&q=80') center/cover;
+    }
+
+    .banner-content{
+      max-width:720px;
+      position:relative;
+      z-index:2;
+    }
+
+    .banner-content h2{
+      font-family:var(--display);
+      font-size:48px;
+      line-height:1.04;
+      letter-spacing:-1px;
+      margin-top:18px;
+    }
+
+    .banner-content h2 span{
+      color:var(--blue);
+    }
+
+    .banner-content p{
+      color:rgba(255,255,255,.78);
+      margin-top:16px;
+      line-height:1.7;
+      font-size:16px;
+    }
+
     .cta-section{
       position:relative;
       overflow:hidden;
@@ -642,20 +722,6 @@
         radial-gradient(circle at 85% 80%, rgba(240,97,155,.16), transparent 35%),
         linear-gradient(180deg, #082431, #06151d);
       text-align:center;
-    }
-
-    .cta-section::before{
-      content:"BP";
-      position:absolute;
-      left:50%;
-      top:50%;
-      transform:translate(-50%,-50%);
-      font-family:var(--display);
-      font-size:34vw;
-      font-weight:800;
-      color:rgba(255,255,255,.025);
-      letter-spacing:-2vw;
-      pointer-events:none;
     }
 
     .cta-box{
@@ -1002,6 +1068,20 @@
         gap:12px;
       }
 
+      .image-box,
+      .online-img{
+        min-height:390px;
+      }
+
+      .banner{
+        min-height:420px;
+        padding:26px;
+      }
+
+      .banner-content h2{
+        font-size:34px;
+      }
+
       .cta-section{
         padding:72px 0;
       }
@@ -1104,7 +1184,8 @@
             <div class="hero-image-bg"></div>
 
             <div class="hero-frame">
-              <img src="./expert.png" alt="Bárbara Panuceno Nutricionista" class="expert-img">
+              <img src="./expert.jpg" alt="Bárbara Panuceno Nutricionista" class="expert-img">
+
               <div class="floating-card glass">
                 <strong>Leveza e estratégia</strong>
                 <span>Nutrição para mulheres que querem resultado sem culpa, restrição extrema ou efeito sanfona.</span>
@@ -1207,7 +1288,16 @@
       <div class="container">
         <div class="split">
           <div class="image-box">
-            <img src="./expert.png" alt="Bárbara Panuceno Nutricionista" class="expert-img">
+            <img 
+              src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=1400&q=80" 
+              alt="Alimentação saudável e nutrição estratégica"
+              class="online-img"
+            >
+
+            <div class="image-overlay-card">
+              <strong>Plano individual</strong>
+              <span>Estratégia alimentar pensada para rotina, objetivo, exames e evolução real.</span>
+            </div>
           </div>
 
           <div class="copy-block">
@@ -1296,7 +1386,32 @@
           </div>
 
           <div class="image-box">
-            <img src="./expert.png" alt="Bárbara Panuceno Nutricionista" class="expert-img">
+            <img 
+              src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1400&q=80" 
+              alt="Atendimento nutricional premium"
+              class="online-img"
+            >
+
+            <div class="image-overlay-card">
+              <strong>Atendimento online</strong>
+              <span>Um acompanhamento acolhedor, profissional e estratégico para mulheres.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="overlay"></div>
+
+      <div class="container">
+        <div class="banner">
+          <div class="banner-content">
+            <span class="tag">Alimentação com leveza</span>
+            <h2>Nutrição para transformar sua rotina sem viver de <span>restrição</span>.</h2>
+            <p>
+              O objetivo não é criar uma dieta impossível. É construir uma estratégia alimentar que combine com sua vida e aproxime você da sua melhor versão.
+            </p>
           </div>
         </div>
       </div>
